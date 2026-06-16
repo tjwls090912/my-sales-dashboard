@@ -36,7 +36,7 @@ def save_data(data):
     with open(DB_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
-# 고급스러운 다크/글래스모피즘 테마 스타일링 적용
+# 고급스러운 다크/글래스모피즘 테마 스타일링 적용 (글자색 흰색 강조)
 st.markdown("""
 <style>
     /* 폰트 및 기본 다크 테마 배경 */
@@ -45,7 +45,16 @@ st.markdown("""
     html, body, [data-testid="stAppViewContainer"] {
         font-family: 'Pretendard', sans-serif;
         background-color: #0b0f19;
-        color: #e2e8f0;
+        color: #ffffff !important;
+    }
+    
+    /* 일반 텍스트, 설명, 목록 등을 모두 선명한 흰색으로 강제 오버라이드 */
+    [data-testid="stMarkdownContainer"] p, 
+    [data-testid="stMarkdownContainer"] span, 
+    [data-testid="stMarkdownContainer"] li, 
+    label, 
+    span {
+        color: #ffffff !important;
     }
     
     /* 타이틀 그라데이션 */
@@ -61,7 +70,7 @@ st.markdown("""
     
     h2, h3 {
         font-weight: 700;
-        color: #ffffff;
+        color: #ffffff !important;
         margin-top: 15px;
         margin-bottom: 15px;
     }
@@ -86,14 +95,14 @@ st.markdown("""
     div[data-testid="stMetricValue"] > div {
         font-size: 36px;
         font-weight: 800;
-        color: #ffffff;
+        color: #ffffff !important;
         letter-spacing: -1px;
     }
     
     div[data-testid="stMetricLabel"] > label {
         font-size: 14px;
         font-weight: 600;
-        color: #94a3b8;
+        color: #ffffff !important; /* 메트릭 레이블 흰색으로 선명하게 */
         letter-spacing: 0.5px;
     }
     
@@ -107,14 +116,14 @@ st.markdown("""
     div[data-testid="stTabs"] button {
         font-size: 16px;
         font-weight: 600;
-        color: #94a3b8;
+        color: #cbd5e1 !important; /* 비활성 탭 글자도 연회색으로 더 밝게 */
         border-bottom: 2px solid transparent !important;
         transition: all 0.3s ease;
         padding: 12px 24px;
     }
     
     div[data-testid="stTabs"] button[aria-selected="true"] {
-        color: #60a5fa !important;
+        color: #60a5fa !important; /* 활성 탭 글자 강조색 */
         font-weight: 700;
         border-bottom: 2px solid #60a5fa !important;
     }
@@ -122,7 +131,7 @@ st.markdown("""
     /* 입력 필드 */
     div[data-testid="stTextInput"] input, div[data-testid="stNumberInput"] input {
         background-color: #111827;
-        color: #ffffff;
+        color: #ffffff !important;
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 10px;
         padding: 10px 14px;
@@ -137,7 +146,7 @@ st.markdown("""
     /* 추가 버튼 */
     div[data-testid="stButton"] button {
         background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-        color: #ffffff;
+        color: #ffffff !important;
         font-weight: 700;
         border: none;
         border-radius: 10px;
@@ -169,6 +178,7 @@ st.markdown("""
     
     div[data-testid="stTable"] td {
         padding: 12px 16px !important;
+        color: #ffffff !important; /* 테이블 셀 텍스트 흰색 */
         border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
     }
 </style>
